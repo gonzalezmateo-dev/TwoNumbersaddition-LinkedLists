@@ -15,11 +15,42 @@ public class App
     {
     	
     	scanner = new Scanner(System.in);
+    	ValidateInput valI = new ValidateInput();
+    	int aux = 0;
+    	String num1 = null;
+    	String num2 = null;
+    	
     	System.out.println("2-numbers addition ");
-    	System.out.print("Insert [0-9]* : ");
-    	String num1 = scanner.nextLine();
-    	System.out.print("Insert [0-9]* : ");
-    	String num2 = scanner.nextLine();
+    	do {
+    		System.out.println("Insert [0-9]* : ");
+    		
+    		if(aux == 0) {
+    			num1 = scanner.nextLine();
+    			
+    			if(valI.IsNumber(num1.trim())) {
+    				aux++;
+    				continue;
+    			}
+    			else {
+    				System.out.println(num1 + " Is not a number.");
+    				continue;
+    			}
+    			
+    		}
+    		else {
+    			num2 = scanner.nextLine();
+    			if(valI.IsNumber(num2.trim())) {
+    				aux++;
+    				break;
+    			}
+    			else {
+    				System.out.println(num2 + " Is not a number.");
+    				continue;
+    			}
+    			
+    		}
+    	} while(true);
+    	
     	
     	TwoNumbersAddition add = new TwoNumbersAddition(num1,num2);
     	System.out.print("Result : ");
